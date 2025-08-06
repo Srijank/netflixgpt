@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
         hostname: 'assets.nflxext.com',
         pathname: '/**',
       },
+       {
+        protocol: 'https',
+        hostname: 'occ-0-4994-2164.1.nflxso.net',
+        pathname: '/**',
+      },
     ],
   },
 };

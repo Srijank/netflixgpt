@@ -1,6 +1,9 @@
+"use client";
 // import type { Metadata } from "next";
 // import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import AuthProvider from "@/utils/AuthProvider";
+import { ReduxProvider } from "@/utils/ReduxProvider";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -18,17 +21,19 @@ import "./globals.css";
 // };
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body
-        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+	return (
+		<html lang="en">
+			<body
+			// className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+			>
+				<ReduxProvider>
+					<AuthProvider>{children}</AuthProvider>
+				</ReduxProvider>
+			</body>
+		</html>
+	);
 }

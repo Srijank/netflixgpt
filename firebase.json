@@ -3,6 +3,13 @@
     "public": "public",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
-      { "source": "**", "function": "nextApp" }
+      {
+        "source": "**",
+        "function": "nextApp"
+      }
     ]
-  }}
+  },
+  "functions": {
+    "source": "functions"
+  }
+}

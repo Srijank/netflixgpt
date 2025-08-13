@@ -1,17 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import VideoTitle from "./VideoTitle";
 import VideoContainer from "./VideoContainer";
 import { Movie, Trailer } from "@/utils/type";
+import { API_OPTION } from "@/utils/const";
+import { useDispatch } from "react-redux";
+import { addTrailer } from "@/utils/movieSlice";
 
 interface MainContainerProps {
-	movies: Movie[] | null;
+	nowplayingmovies: Movie[] | null;
 }
-const MainContainer = ({ movies }: MainContainerProps) => {
-	console.log("MainContainer movies:", movies);
+let trailers: Trailer[] | null = null;
+const MainContainer = ({ nowplayingmovies }: MainContainerProps) => {
+	const dispatch = useDispatch();
+	console.log("MainContainer movies:", nowplayingmovies);
+	const getTrailer = async () => {
+		if (!nowplayingmovies || nowplayingmovies.length === 0) {
+			return null;
+		}
+		//let randomIndex = Math.floor(Math.random() * nowplayingmovies.length);
+		//const movieId = nowplayingmovies[randomIndex]?.id;
+		const response = await fetch(
+			`https://api.themoviedb.org/3/movie/` +
+				nowplayingmovies[0]?.id +
+				`/videos?language=en-US`,
+			API_OPTION
+		);
+		const data = await response.json();
+		trailers = data.results || null;
+		console.log("Trailer data:", trailers);
+		dispatch(addTrailer(trailers));
+	};
+	useEffect(() => {
+		getTrailer();
+	}, []);
+
 	return (
 		<div className="">
-			<VideoTitle content={movies} />
-			<VideoContainer />
+			<VideoTitle content={nowplayingmovies} />
+			<VideoContainer trailer={trailers} />
 		</div>
 	);
 };

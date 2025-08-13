@@ -34,23 +34,20 @@ const Header = () => {
 	};
 
 	return (
-		<div className="absolute my-1 w-full flex  items-center p-4 bg-gradient-to-b from-gray-900 to-white-800">
+		<div className="absolute my-1 w-full flex  items-center p-4 bg-gradient-to-b from-gray-900 to-white-800 z-20">
 			<Image
 				src={LOGO}
 				alt="logo"
 				width={80}
 				height={80}
+				unoptimized
 				className="w-48 h-20 mx-16 "
 			/>
 
 			{user && (
 				<div className="flex  space-x-5">
 					<p className="text-white">Home </p>
-					<p className="text-white ">Tv Shows </p>
-					<p className="text-white">Movies </p>
-					<p className="text-white ">New & Popular </p>
 					<p className="text-white ">My list </p>
-					<p className="text-white ">Browse by Language </p>
 				</div>
 			)}
 			{user && (
@@ -120,14 +117,15 @@ const Header = () => {
 					</div>
 					<div
 						className={`${
-							profileToggle ? "block" : "hidden"
-						}   w-full flex flex-col mt-4 md:mt-0 text-red-400 bg-gray-600`}>
+							profileToggle ? "block absolute" : "hidden"
+						}    flex flex-col mt-4 md:mt-0 mx-2 text-red-400 bg-gray-500`}>
 						<p
-							className="font-bold p-2"
+							className="font-bold p-2 hover:bg-gray-800 cursor-pointer"
 							onClick={handleLogout}>
 							Logout
 						</p>
 						<p className="font-bold p-2">Profile</p>
+						<p className="font-bold p-2">My list</p>
 					</div>
 				</div>
 			)}

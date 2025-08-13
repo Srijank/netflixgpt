@@ -2,19 +2,25 @@ import React from "react";
 import Header from "./Header";
 import useLogginCheck from "@/customHooks/useLogginCheck";
 import MainContainer from "./MainContainer";
-import useMoviesInfo from "@/customHooks/useMoviesInfo";
+import useNowPlayingMoviesInfo from "@/customHooks/useNowPlayingMoviesInfo";
 import { useSelector } from "react-redux";
 import { RootState } from "@/utils/appStore";
-import { Movie, Trailer } from "@/utils/type";
+import SecondContainer from "./SecondContainer";
+import usePopularMovies from "@/customHooks/usePopularMovies";
+import useTopRatedMovies from "@/customHooks/useTopRatedMovies";
+import useUpcomingMovies from "@/customHooks/useUpcomingMovies";
 const Browse = () => {
 	useLogginCheck();
-	useMoviesInfo();
-	const { movies } = useSelector((store: RootState) => store.movies);
+	useNowPlayingMoviesInfo();
+	usePopularMovies();
+	useTopRatedMovies();
+	useUpcomingMovies();
+	const { nowplayingmovies } = useSelector((store: RootState) => store.movies);
 	return (
-		<div>
+		<div className="bg-black">
 			<Header />
-			<MainContainer movies={movies} />
-			{/* <SecondContainer /> */}
+			<MainContainer nowplayingmovies={nowplayingmovies} />
+			<SecondContainer />
 		</div>
 	);
 };

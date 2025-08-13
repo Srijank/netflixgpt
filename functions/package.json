@@ -5,11 +5,16 @@
   "main": "lib/index.js",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "tsc",
     "start": "next start",
+     "build": "next build",
     "lint": "next lint",
-    "firebase-build": "next build && cp -r .next functions/.next"
+   "firebase-build": "next build && cp -r .next functions/.next"
+
   },
+  "engines": {
+  "node": "22"
+}
+,
   "dependencies": {
     "firebase": "^12.0.0",
     "firebase-functions": "^4.9.0",

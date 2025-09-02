@@ -73,9 +73,19 @@
           "protocol": "https",
           "hostname": "occ-0-4994-2164.1.nflxso.net",
           "pathname": "/**"
+        },
+        {
+          "protocol": "https",
+          "hostname": "media.themoviedb.org",
+          "pathname": "/**"
+        },
+        {
+          "protocol": "https",
+          "hostname": "image.tmdb.org",
+          "pathname": "/**"
         }
       ],
-      "unoptimized": false
+      "unoptimized": true
     },
     "devIndicators": {
       "position": "bottom-left"

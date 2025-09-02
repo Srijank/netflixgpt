@@ -8,8 +8,8 @@ import usePopularMovies from "@/customHooks/usePopularMovies";
 // }
 const SecondContainer = () => {
 	return (
-		<div className="bg-black absolute pt-10">
-			<div className="-mt-52 z-20 pl-10">
+		<div className="bg-black md:absolute pt-10">
+			<div className="md:-mt-52 mt-72 z-20 pl-10">
 				<MoviePlaying title="Now Playing" />
 				<MoviePlaying title="Upcoming" />
 				<MoviePlaying title="Top Rated" />

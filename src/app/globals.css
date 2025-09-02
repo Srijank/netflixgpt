@@ -2,4 +2,12 @@
 html, body {
   margin: 0;
   padding: 0;
+}/* Completely hide horizontal scrollbar */
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

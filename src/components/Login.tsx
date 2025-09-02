@@ -15,8 +15,10 @@ import { useRouter } from "next/navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "@/utils/userSlice";
 import { RootState } from "@/utils/appStore";
+import { usePathname } from "next/navigation";
 
 const Login = () => {
+	const pathname = usePathname();
 	const router = useRouter();
 	const [signBtnColor, setsignBtnColor] = useState("bg-red-500");
 	const [isLogged, setIsLogged] = useState(true);
@@ -36,14 +38,14 @@ const Login = () => {
 
 			if (user === null) {
 				router.push("/"); // Not logged in
-			} else {
+			} else if (pathname === "/") {
 				router.push("/browse"); // Logged in
 			}
 			setIsLoading(false); // Set loading to false after checking auth state
 		}, 1000); // Short delay for smooth UX
 
 		return () => clearTimeout(delayRedirect);
-	}, [user]);
+	}, [user, pathname, router]);
 
 	// Show loading only while user is undefined (auth still loading)
 	if (user === undefined || isLoading) {
@@ -88,7 +90,9 @@ const Login = () => {
 							// An error occurred
 						});
 					const user = userCredential.user;
-					router.push("/browse");
+					if (pathname === "/") {
+						router.push("/browse");
+					}
 					// ...
 				})
 				.catch((error) => {
@@ -114,7 +118,9 @@ const Login = () => {
 							displayName: userCredential.user.displayName,
 						})
 					);
-					router.push("/browse");
+					if (pathname === "/") {
+						router.push("/browse");
+					}
 					// ...
 				})
 				.catch((error) => {

@@ -54,6 +54,30 @@
         "x-next-revalidate-tag-token"
       ]
     },
+    "/gptsearch": {
+      "experimentalBypassFor": [
+        {
+          "type": "header",
+          "key": "Next-Action"
+        },
+        {
+          "type": "header",
+          "key": "content-type",
+          "value": "multipart/form-data;.*"
+        }
+      ],
+      "initialRevalidateSeconds": false,
+      "srcRoute": "/gptsearch",
+      "dataRoute": "/gptsearch.rsc",
+      "allowHeader": [
+        "host",
+        "x-matched-path",
+        "x-prerender-revalidate",
+        "x-prerender-revalidate-if-generated",
+        "x-next-revalidated-tags",
+        "x-next-revalidate-tag-token"
+      ]
+    },
     "/": {
       "experimentalBypassFor": [
         {
@@ -82,8 +106,8 @@
   "dynamicRoutes": {},
   "notFoundRoutes": [],
   "preview": {
-    "previewModeId": "47fec99f948ef909f5f088cfb399aebd",
-    "previewModeSigningKey": "dc8653fe0d3ea6db53ee8f7acd10da568df70fa062af3f6a557de019e332485b",
-    "previewModeEncryptionKey": "bdca2c2169ed0cfd8248720e5577ed7efee275c7e15aeea7f0ee1b5b0998a05f"
+    "previewModeId": "601048427fb787afb1becb013fa49d0e",
+    "previewModeSigningKey": "7b9919cc64ec0bb6a394c37e47e9219b723eccbb85a280f1e97c1df89a85d634",
+    "previewModeEncryptionKey": "a6e34d8cd23421972e3ae945d1c794df6d01ba1e9496d6c470d5a537f8756a9a"
   }
 }

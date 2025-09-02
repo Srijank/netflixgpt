@@ -10,10 +10,8 @@ const useLogginCheck = () => {
 		const delayRedirect = setTimeout(() => {
 			if (user === null) {
 				router.push("/");
-			} else {
-				router.push("/browse");
 			}
-		}, 2000); // ⏱ Delay of 1000ms (1 second)
+		}, 3000); // ⏱ Delay of 3000ms (3 seconds)
 
 		return () => clearTimeout(delayRedirect);
 	}, [user]);

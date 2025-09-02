@@ -43,6 +43,12 @@
       "regex": "^/favicon\\.ico(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/favicon\\.ico(?:/)?$"
+    },
+    {
+      "page": "/gptsearch",
+      "regex": "^/gptsearch(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/gptsearch(?:/)?$"
     }
   ],
   "dataRoutes": [],

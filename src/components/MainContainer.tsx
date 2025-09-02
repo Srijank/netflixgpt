@@ -12,7 +12,6 @@ interface MainContainerProps {
 let trailers: Trailer[] | null = null;
 const MainContainer = ({ nowplayingmovies }: MainContainerProps) => {
 	const dispatch = useDispatch();
-	console.log("MainContainer movies:", nowplayingmovies);
 	const getTrailer = async () => {
 		if (!nowplayingmovies || nowplayingmovies.length === 0) {
 			return null;
@@ -27,7 +26,6 @@ const MainContainer = ({ nowplayingmovies }: MainContainerProps) => {
 		);
 		const data = await response.json();
 		trailers = data.results || null;
-		console.log("Trailer data:", trailers);
 		dispatch(addTrailer(trailers));
 	};
 	useEffect(() => {
